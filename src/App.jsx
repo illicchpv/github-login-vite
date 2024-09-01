@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable no-unused-vars */
+import {useState} from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  // 1е обращение - отсылаем на GH login screen передавая CLIENT_ID
+  // после логина пользователь возвращается на сайт, за счет указанной обратной ссылки
+  // (Authorization callback URL) и в URL передаётся code
+  // при помощи которого и CLIENT_SECRET получаем access token
+
+  function loginWithGithub() {
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='App'>
+        <div>
+          <h1>login with GitHub
+            <button
+              onClick={loginWithGithub}
+            >do</button>
+          </h1>
+        </div>
       </div>
-      <h1>Vite + React VITE_SOME_KEY:{import.meta.env.VITE_SOME_KEY}</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
