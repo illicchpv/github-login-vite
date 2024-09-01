@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -18,6 +18,15 @@ function App() {
   function loginWithGithub() {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`;
   }
+
+  useEffect(() => {
+    // http://localhost:3000/?code=bbba1f7c6de5b23d15c4
+    const qs = window.location.search;
+    const urlParams = new URLSearchParams(qs);
+    const code = urlParams.get('code');
+    console.log('code: ', code);
+
+  }, []);
 
   return (
     <>
