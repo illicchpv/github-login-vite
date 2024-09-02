@@ -51,3 +51,6 @@ GET https://api.github.com/user
 
 
 https://youtu.be/rRn2EisxPl4?t=1358
+
+# VITE_PROXY_ROOT=http://localhost:4000
+VITE_PROXY_ROOT=https://login-proxy.onrender.com
