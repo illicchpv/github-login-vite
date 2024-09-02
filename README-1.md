@@ -15,10 +15,18 @@
 1. Запрос удостоверения GitHub пользователя
 
   GET https://github.com/login/oauth/authorize
+  client_id
+  redirect_uri
+  state - Случайная строка,
 
 2. Перенаправление пользователей из GitHub обратно на ваш сайт
 
   POST https://github.com/login/oauth/access_token
+  code
+  client_id
+  client_secret
+  redirect_uri
+    Accept: application/json
 
 По умолчанию ответ имеет следующую форму: 
 
@@ -37,3 +45,9 @@
 Authorization: Bearer OAUTH-TOKEN
 
 GET https://api.github.com/user
+
+
+>npm i axios
+
+
+https://youtu.be/rRn2EisxPl4?t=1358

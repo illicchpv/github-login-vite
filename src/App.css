@@ -1,0 +1,17 @@
+.App{
+
+  .userDataBlock{
+    display: flex;
+    gap: 20px;
+  }
+
+  .at{
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  pre{
+    font-size: 14px;
+  }
+}
