@@ -57,3 +57,13 @@ VITE_PROXY_ROOT=https://login-proxy.onrender.com
 
 github:
 https://github.com/illicchpv/github-login-vite
+
+
+[on render](https://github-login-vite.onrender.com)
+
+----------------- create application on github
+
+https://github-login-vite.onrender.com
+Client ID
+Ov23lirz8ylnpeeioS7s
+9ed468d318f825fe7288321e560217c363a1e841

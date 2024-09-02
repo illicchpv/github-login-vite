@@ -11,6 +11,7 @@ const URL_ACCESS = 'https://github.com/login/oauth/access_token';
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 // const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
 const PROXY_ROOT = import.meta.env.VITE_PROXY_ROOT;
+const CALLBACK_URL = import.meta.env.VITE_CALLBACK_URL;
 
 function App() {
   const [codeSt, setCodeSt] = useState('');
@@ -24,7 +25,7 @@ function App() {
   // при помощи которого и CLIENT_SECRET получаем access token
 
   function loginWithGithub() {
-    window.location.href = `${URL_AUTHORIZE}?client_id=${CLIENT_ID}`;
+    window.location.href = `${URL_AUTHORIZE}?client_id=${CLIENT_ID}&redirect_uri=${CALLBACK_URL}`;
   }
 
   async function getUserData() {
@@ -61,7 +62,13 @@ function App() {
     const code = urlParams.get('code');
     console.log('code: ', code, localStorage.getItem('gh.access_token'));
     setCodeSt(code);
-    history.replaceState(null, null, import.meta.env.VITE_CALLBACK_URL);
+    if (code) {
+      try {
+        history.replaceState(null, null, CALLBACK_URL);
+      } catch (e) {
+        console.error("history.replaceState Error", e);
+      }
+    }
     // console.log('CLIENT_SECRET: ', CLIENT_SECRET);
     // console.log('CLIENT_ID: ', CLIENT_ID);
 
